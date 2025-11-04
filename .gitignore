@@ -1,0 +1,16 @@
+target/
+*.iml
+.idea/
+.classpath
+.project
+.settings/
+node_modules/
+*.log
+.env
+ui/.next/
+ui/out/
+ui/.turbo/
+ui/.vercel/
+**/bin/
+**/build/
+*.DS_Store

@@ -1,0 +1,51 @@
+server:
+  port: ${GATEWAY_PORT:8080}
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      default-filters: []
+      routes:
+        - id: auth-service
+          uri: http://auth-service:8081
+          predicates:
+            - Path=/api/auth/**
+        - id: product-service
+          uri: http://product-service:8082
+          predicates:
+            - Path=/api/products/**
+        - id: order-service
+          uri: http://order-service:8083
+          predicates:
+            - Path=/api/orders/**
+        - id: billing-service
+          uri: http://billing-service:8084
+          predicates:
+            - Path=/api/billing/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - http://localhost:3000
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:Y2hhbmdlLW1lLWRldi1vbmx5LXNlY3JldC1rZXk=}
+    expiration-seconds: 3600

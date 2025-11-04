@@ -1,0 +1,132 @@
+[
+  {
+    "sku": "MOB-5G-LITE",
+    "name": "5G Lite Plan",
+    "type": "MOBILE",
+    "description": "Entry-level 5G mobile plan with unlimited texts and 10 GB data.",
+    "priceMonthly": 19.99,
+    "features": [
+      "5G access in metro areas",
+      "Unlimited national calls",
+      "Data rollover up to 5 GB"
+    ],
+    "active": true
+  },
+  {
+    "sku": "MOB-5G-PRO",
+    "name": "5G Pro Plan",
+    "type": "MOBILE",
+    "description": "Power users get 80 GB of data plus premium customer support.",
+    "priceMonthly": 49.99,
+    "features": [
+      "Unlimited 5G data after 80 GB at reduced speed",
+      "Roaming in EU + UK",
+      "Priority support"
+    ],
+    "active": true
+  },
+  {
+    "sku": "INT-FIBER-150",
+    "name": "Fiber 150",
+    "type": "INTERNET",
+    "description": "Reliable home fiber internet with 150 Mbps symmetrical speeds.",
+    "priceMonthly": 39.99,
+    "features": [
+      "Wi-Fi 6 modem included",
+      "Smart home network dashboard",
+      "Free installation"
+    ],
+    "active": true
+  },
+  {
+    "sku": "INT-FIBER-400",
+    "name": "Fiber 400",
+    "type": "INTERNET",
+    "description": "Ultra-fast fiber internet perfect for streaming and gaming households.",
+    "priceMonthly": 59.99,
+    "features": [
+      "400 Mbps symmetrical speeds",
+      "Gaming traffic optimisation",
+      "Wi-Fi mesh extender"
+    ],
+    "active": true
+  },
+  {
+    "sku": "BNDL-PLAY-START",
+    "name": "Play Start Bundle",
+    "type": "BUNDLE",
+    "description": "Combine mobile and fiber for the whole family with streaming perks.",
+    "priceMonthly": 69.99,
+    "features": [
+      "5G Lite mobile + Fiber 150",
+      "Premium TV app access",
+      "2 GB bonus roaming data"
+    ],
+    "active": true
+  },
+  {
+    "sku": "BNDL-PLAY-MAX",
+    "name": "Play Max Bundle",
+    "type": "BUNDLE",
+    "description": "Ultimate bundle with multi-line mobile, fiber 400, and entertainment add-ons.",
+    "priceMonthly": 99.99,
+    "features": [
+      "Three mobile lines included",
+      "Fiber 400 + Wi-Fi mesh",
+      "Cloud DVR with 200 hours storage"
+    ],
+    "active": true
+  },
+  {
+    "sku": "MOB-ESSENTIAL",
+    "name": "Essential Mobile",
+    "type": "MOBILE",
+    "description": "Affordable 4G plan with unlimited talk and 5 GB of data.",
+    "priceMonthly": 14.99,
+    "features": [
+      "Unlimited talk & text",
+      "5 GB high-speed data",
+      "Data boost available"
+    ],
+    "active": true
+  },
+  {
+    "sku": "INT-DSL-60",
+    "name": "DSL 60",
+    "type": "INTERNET",
+    "description": "Stable DSL connection for everyday browsing and streaming.",
+    "priceMonthly": 29.99,
+    "features": [
+      "60 Mbps download",
+      "Unlimited data",
+      "Home network security suite"
+    ],
+    "active": true
+  },
+  {
+    "sku": "BNDL-HOME-WORK",
+    "name": "Home & Work Bundle",
+    "type": "BUNDLE",
+    "description": "Flexible bundle tailored to hybrid workers with enhanced support.",
+    "priceMonthly": 84.99,
+    "features": [
+      "Priority tech support",
+      "Mobile hotspot allowance",
+      "Fiber 150 + 20 GB mobile data"
+    ],
+    "active": true
+  },
+  {
+    "sku": "MOB-YOUTH-PLAN",
+    "name": "Youth Plan",
+    "type": "MOBILE",
+    "description": "Mobile plan designed for students with social media data bonuses.",
+    "priceMonthly": 24.99,
+    "features": [
+      "Social media data exempt",
+      "Music streaming add-on",
+      "Spend alerts"
+    ],
+    "active": true
+  }
+]

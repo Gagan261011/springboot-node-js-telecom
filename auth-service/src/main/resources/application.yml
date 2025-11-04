@@ -1,0 +1,33 @@
+server:
+  port: ${AUTH_PORT:8081}
+
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:h2:mem:authdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:Y2hhbmdlLW1lLWRldi1vbmx5LXNlY3JldC1rZXk=}
+    expiration-seconds: 3600

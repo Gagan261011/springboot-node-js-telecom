@@ -1,0 +1,170 @@
+{
+  "info": {
+    "name": "Proximus Inspired Telecom",
+    "_postman_id": "f5b6086f-7d31-4b17-8cdd-telecomsuite",
+    "description": "Collection covering auth, products, orders, and billing flows.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\",\n  \"fullName\": \"{{fullName}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "register"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Me",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/me",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "me"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Products",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/products",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add To Cart",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": {{productId}},\n  \"qty\": 1\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/cart",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders", "cart"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Checkout",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/checkout",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders", "checkout"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Invoice",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{baseUrl}}/api/billing/invoice/{{orderId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "billing", "invoice", "{{orderId}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pay Invoice",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{baseUrl}}/api/billing/pay/{{invoiceId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "billing", "pay", "{{invoiceId}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "My Orders",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/my",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders", "my"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "My Invoices",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/billing/my",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "billing", "my"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "email", "value": "demo@example.com" },
+    { "key": "password", "value": "Password123" },
+    { "key": "fullName", "value": "Demo User" },
+    { "key": "productId", "value": "1" },
+    { "key": "orderId", "value": "1" },
+    { "key": "invoiceId", "value": "1" }
+  ]
+}
