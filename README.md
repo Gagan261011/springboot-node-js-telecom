@@ -160,10 +160,15 @@ Import `postman/ProximusInspired.postman_collection.json` for a ready-to-run flo
 | `Billing`    | Invoice list with mock payment toggle            |
 | `Account`    | Profile snapshot (email, full name)              |
 
-Screenshots (add your own assets):
+Screenshots:
 
-- `docs/screenshots/home.png` - Home hero (placeholder)  
-- `docs/screenshots/products.png` - Plan gallery (placeholder)
+| Home Page | Products Page |
+|---|---|
+| ![Home Page](docs/screenshots/home.png) | ![Products Page](docs/screenshots/products.png) |
+
+| Login Page | Cart Page |
+|---|---|
+| ![Login Page](docs/screenshots/login.png) | ![Cart Page](docs/screenshots/cart.png) |
 
 ---
 
