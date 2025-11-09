@@ -24,79 +24,107 @@ export default async function HomePage() {
   const featured = products.slice(0, 3);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12 space-y-12">
-      <section className="bg-white rounded-2xl shadow-lg p-10 relative overflow-hidden">
-        <div className="absolute -right-24 -top-24 h-64 w-64 bg-primary-light opacity-20 rounded-full blur-3xl" />
-        <div className="max-w-3xl space-y-6 relative z-10">
-          <span className="uppercase text-xs tracking-widest text-primary">
-            Telecom reinvented
-          </span>
-          <h1 className="text-4xl md:text-5xl font-semibold text-slate-900 leading-tight">
-            Power your digital life with flexible mobile, internet, and bundle plans.
-          </h1>
-          <p className="text-lg text-slate-600">
-            From lightning-fast fiber to generous 5G data, Connectify keeps homes and teams connected.
-            Choose a plan that matches the way you work, play, and roam.
-          </p>
-          <div className="flex flex-wrap gap-4">
+    <div className="relative">
+      <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-brand-900/60 via-ink-900/70 to-transparent blur-3xl" />
+      <div className="relative mx-auto max-w-6xl space-y-12 px-4 py-12">
+        <section className="relative overflow-hidden rounded-3xl border border-white/15 bg-ink-900 text-white shadow-glow">
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl" />
+          <div className="absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-accent-400/40 blur-3xl" />
+          <div className="relative grid gap-10 p-10 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+            <div className="space-y-6">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
+                Telecom reinvented
+              </span>
+              <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
+                Power your digital life with bold, flexible mobile, fiber, and bundle plans.
+              </h1>
+              <p className="text-lg text-white/70">
+                From lightning-fast fiber to generous 5G data, Connectify keeps homes and teams connected. Choose a plan
+                that matches how you work, play, and roam without compromise.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/products"
+                  className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-600 transition hover:-translate-y-0.5"
+                >
+                  Explore plans
+                </Link>
+                <Link
+                  href="/auth/register"
+                  className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-white"
+                >
+                  Create account
+                </Link>
+              </div>
+            </div>
+            <div className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+              <div className="space-y-6">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.35em] text-white/60">Top metric</p>
+                  <p className="text-4xl font-bold">4.9/5</p>
+                  <p className="text-sm text-white/60">Average satisfaction across 12k+ households</p>
+                </div>
+                <div className="grid grid-cols-2 gap-4 text-center text-xs uppercase tracking-widest text-white/70">
+                  <div className="rounded-2xl border border-white/10 p-4">
+                    <p className="text-3xl font-semibold">5G</p>
+                    <p>Nationwide</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 p-4">
+                    <p className="text-3xl font-semibold">1 GB</p>
+                    <p>Fiber speeds</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="plans" className="space-y-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-2xl font-semibold text-ink-900 dark:text-white">Popular plans</h2>
             <Link
               href="/products"
-              className="px-5 py-3 rounded-md bg-primary text-white hover:bg-primary-dark transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-600 transition hover:gap-3 dark:text-brand-400"
             >
-              Explore plans
-            </Link>
-            <Link
-              href="/auth/register"
-              className="px-5 py-3 rounded-md bg-white border border-primary text-primary hover:bg-primary/10 transition-colors"
-            >
-              Create account
+              See all plans ->
             </Link>
           </div>
-        </div>
-      </section>
+          {featured.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-brand-200 bg-white/70 p-6 text-sm text-ink-600 shadow dark:border-white/10 dark:bg-ink-800/60 dark:text-white/80">
+              Plans are loading. Try again shortly.
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-3">
+              {featured.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
+        </section>
 
-      <section id="plans" className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-slate-900">Popular plans</h2>
-          <Link href="/products" className="text-sm text-primary">
-            See all plans
-          </Link>
-        </div>
-        {featured.length === 0 ? (
-          <div className="rounded-xl bg-white p-6 shadow text-slate-600">
-            Plans are loading. Try again shortly.
-          </div>
-        ) : (
-          <div className="grid gap-6 md:grid-cols-3">
-            {featured.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+        {products.length > 0 && (
+          <PlanComparison plans={products.filter((p) => p.type === "BUNDLE").slice(0, 3)} />
         )}
-      </section>
 
-      {products.length > 0 && (
-        <PlanComparison plans={products.filter((p) => p.type === "BUNDLE").slice(0, 3)} />
-      )}
-
-      <section
-        id="support"
-        className="bg-gradient-to-r from-primary to-primary-dark text-white rounded-2xl p-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
-      >
-        <div>
-          <h2 className="text-2xl font-semibold">Need a tailored enterprise solution?</h2>
-          <p className="text-sm text-white/80 mt-2 max-w-xl">
-            Our consultants design resilient hybrid connectivity for distributed teams.
-            Get a complimentary network assessment and roadmap.
-          </p>
-        </div>
-        <Link
-          href="/contact"
-          className="px-5 py-3 rounded-md bg-white text-primary font-medium hover:bg-slate-100 transition-colors"
+        <section
+          id="support"
+          className="flex flex-col gap-6 rounded-3xl border border-brand-500/30 bg-gradient-to-r from-brand-600 via-ink-900 to-ink-900 p-10 text-white shadow-glow md:flex-row md:items-center md:justify-between"
         >
-          Book a call
-        </Link>
-      </section>
+          <div className="space-y-2">
+            <h2 className="text-2xl font-semibold">Need a tailored enterprise solution?</h2>
+            <p className="text-sm text-white/80">
+              Our consultants design resilient hybrid connectivity for distributed teams. Get a complimentary network
+              assessment and roadmap.
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-white"
+          >
+            Book a call
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }
