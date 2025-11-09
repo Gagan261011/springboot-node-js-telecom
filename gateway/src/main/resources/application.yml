@@ -28,16 +28,18 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins:
-              - http://localhost:3000
+              - "http://localhost:3000"
             allowedMethods:
               - GET
               - POST
               - PUT
               - DELETE
               - OPTIONS
+              - PATCH
             allowedHeaders:
               - "*"
             allowCredentials: true
+            maxAge: 3600
 
 management:
   endpoints:
@@ -47,5 +49,5 @@ management:
 
 app:
   jwt:
-    secret: ${JWT_SECRET:Y2hhbmdlLW1lLWRldi1vbmx5LXNlY3JldC1rZXk=}
+    secret: ${JWT_SECRET:Y2hhbmdlLW1lLWRldi1vbmx5LXNlY3JldC1rZXktMzItYnl0ZXMta2V5}
     expiration-seconds: 3600

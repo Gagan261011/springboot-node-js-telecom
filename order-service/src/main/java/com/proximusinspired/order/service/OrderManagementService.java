@@ -10,7 +10,6 @@ import com.proximusinspired.order.domain.CustomerOrder;
 import com.proximusinspired.order.domain.CustomerOrderRepository;
 import com.proximusinspired.order.domain.OrderItem;
 import com.proximusinspired.order.product.ProductClient;
-import com.proximusinspired.order.product.ProductUnavailableException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

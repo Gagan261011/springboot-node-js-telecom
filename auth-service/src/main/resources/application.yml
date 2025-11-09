@@ -29,5 +29,5 @@ management:
 
 app:
   jwt:
-    secret: ${JWT_SECRET:Y2hhbmdlLW1lLWRldi1vbmx5LXNlY3JldC1rZXk=}
+    secret: ${JWT_SECRET:Y2hhbmdlLW1lLWRldi1vbmx5LXNlY3JldC1rZXktMzItYnl0ZXMta2V5}
     expiration-seconds: 3600

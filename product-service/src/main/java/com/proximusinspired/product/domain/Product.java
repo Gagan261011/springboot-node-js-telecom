@@ -40,7 +40,7 @@ public class Product {
     @Column(nullable = false, scale = 2, precision = 10)
     private BigDecimal priceMonthly;
 
-    @ElementCollection
+    @ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
     @CollectionTable(name = "product_features", joinColumns = @JoinColumn(name = "product_id"))
     @Column(name = "feature")
     private List<String> features = new ArrayList<>();

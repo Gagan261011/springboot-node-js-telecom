@@ -1,0 +1,4 @@
+$env:JWT_SECRET="MDEyMzQ1Njc4OUFCQ0RFRjAxMjM0NTY3ODlBQkNERUY="
+$env:GATEWAY_PORT="8080"
+$env:SPRING_PROFILES_ACTIVE="dev"
+mvn -pl gateway spring-boot:run

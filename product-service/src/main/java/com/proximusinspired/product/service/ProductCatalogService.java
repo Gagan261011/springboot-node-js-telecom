@@ -91,6 +91,7 @@ public class ProductCatalogService {
                 product.setActive(Boolean.parseBoolean(String.valueOf(raw.getOrDefault("active", true))));
                 productRepository.save(product);
             }
+            productRepository.flush();
             return listProducts(Optional.empty());
         } catch (IOException e) {
             throw new ProductServiceException("Failed to seed products", e);

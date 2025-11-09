@@ -34,6 +34,11 @@ public class JwtGatewayFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        // Allow OPTIONS requests (CORS preflight) to pass through
+        if ("OPTIONS".equalsIgnoreCase(exchange.getRequest().getMethod().name())) {
+            return chain.filter(exchange);
+        }
+        
         if (isPublic(exchange)) {
             return chain.filter(exchange);
         }
@@ -59,7 +64,7 @@ public class JwtGatewayFilter implements GlobalFilter, Ordered {
 
     private boolean isPublic(ServerWebExchange exchange) {
         String path = exchange.getRequest().getURI().getPath();
-        if ("GET".equalsIgnoreCase(exchange.getRequest().getMethodValue())
+        if ("GET".equalsIgnoreCase(exchange.getRequest().getMethod().name())
                 && path.startsWith("/api/products")) {
             return true;
         }

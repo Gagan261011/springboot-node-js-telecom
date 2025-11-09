@@ -2,7 +2,6 @@ package com.proximusinspired.product.api;
 
 import com.proximusinspired.product.domain.ProductType;
 import com.proximusinspired.product.service.ProductCatalogService;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;

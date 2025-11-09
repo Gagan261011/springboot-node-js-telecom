@@ -31,6 +31,7 @@ class AuthServiceIntegrationTests {
 
     @BeforeEach
     void setUp() {
+        userRepository.deleteAll();
         request = new RegisterRequest("testuser@example.com", "Password123", "Test User");
     }
 

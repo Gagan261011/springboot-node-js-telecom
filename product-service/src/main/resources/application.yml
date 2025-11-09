@@ -29,6 +29,6 @@ management:
 
 app:
   jwt:
-    secret: MDEyMzQ1Njc4OUFCQ0RFRjAxMjM0NTY3ODlBQkNERUY=
+    secret: ${JWT_SECRET:Y2hhbmdlLW1lLWRldi1vbmx5LXNlY3JldC1rZXktMzItYnl0ZXMta2V5}
   seed:
     on-startup: ${PRODUCT_SEED_ON_STARTUP:true}

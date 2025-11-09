@@ -6,7 +6,6 @@ import com.proximusinspired.billing.domain.Invoice;
 import com.proximusinspired.billing.domain.InvoiceRepository;
 import com.proximusinspired.billing.domain.InvoiceStatus;
 import com.proximusinspired.billing.order.OrderClient;
-import com.proximusinspired.billing.order.OrderNotAccessibleException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

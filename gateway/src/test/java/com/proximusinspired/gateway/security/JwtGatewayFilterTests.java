@@ -17,7 +17,7 @@ class JwtGatewayFilterTests {
 
     @BeforeEach
     void setup() {
-        jwtService = new JwtService("Y2hhbmdlLW1lLWRldi1vbmx5LXNlY3JldC1rZXk=", 3600);
+        jwtService = new JwtService("Y2hhbmdlLW1lLWRldi1vbmx5LXNlY3JldC1rZXktMzItYnl0ZXMta2V5", 3600);
         filter = new JwtGatewayFilter(jwtService);
     }
 
@@ -49,7 +49,7 @@ class JwtGatewayFilterTests {
         CapturingChain chain = new CapturingChain();
         filter.filter(exchange, chain).block();
         assertThat(chain.called).isTrue();
-        assertThat(chain.mutatedExchange.getRequest().getHeaders().getFirst("X-User-Id"))
+        assertThat(chain.mutatedRequest.getHeaders().getFirst("X-User-Id"))
                 .isEqualTo("5");
     }
 
@@ -58,11 +58,11 @@ class JwtGatewayFilterTests {
         String token = jwtService.issueToken(7L, "cookie@example.com");
         MockServerWebExchange exchange = MockServerWebExchange.from(
                 MockServerHttpRequest.get("/api/orders/cart")
-                        .header("Cookie", "accessToken=" + token));
+                        .cookie(new org.springframework.http.HttpCookie("accessToken", token)));
         CapturingChain chain = new CapturingChain();
         filter.filter(exchange, chain).block();
         assertThat(chain.called).isTrue();
-        assertThat(chain.mutatedExchange.getRequest().getHeaders().getFirst("Authorization"))
+        assertThat(chain.mutatedRequest.getHeaders().getFirst("Authorization"))
                 .contains(token);
     }
 
@@ -79,12 +79,12 @@ class JwtGatewayFilterTests {
 
     private static class CapturingChain implements GatewayFilterChain {
         boolean called = false;
-        MockServerWebExchange mutatedExchange;
+        org.springframework.http.server.reactive.ServerHttpRequest mutatedRequest;
 
         @Override
         public Mono<Void> filter(org.springframework.web.server.ServerWebExchange exchange) {
             called = true;
-            mutatedExchange = (MockServerWebExchange) exchange;
+            mutatedRequest = exchange.getRequest();
             return Mono.empty();
         }
     }
